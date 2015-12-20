@@ -1,0 +1,22 @@
+# groups
+groups:
+  admin: 500
+  koen: 1002
+  deploy: 1003
+
+# users
+users:
+  koen:
+    uid: 1002
+    gid: 1002
+    fullname: Koen Romers
+    groups: ['admin','www-data']
+    sshkeys:
+      - [insert key here]
+  deploy:
+    uid: 1003
+    gid: 1003
+    fullname: Deploy user
+    groups: ['www-data']
+    sshkeys:
+      - [insert key here]

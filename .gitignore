@@ -1,0 +1,4 @@
+*.DS_Store
+.vagrant
+.env
+salt/pillar/sensitive-data.sls

@@ -1,0 +1,41 @@
+essential:
+  pkg.latest:
+    - pkgs:
+      - acl
+      - augeas-tools
+      - build-essential
+      - coreutils
+      - curl
+      - fail2ban
+      - finger
+      - gcc
+      - gifsicle
+      - git-core
+      - subversion
+      - htop
+      - imagemagick
+      - jpegoptim
+      # - jpegtran
+      - language-pack-nl
+      - language-pack-en
+      - libattr1
+      - libattr1-dev
+      - make
+      - mytop
+      - nano
+      - ncdu
+      - optipng
+      - pngcrush
+      # - pngout
+      - pngquant
+      - python-augeas
+      - python-git
+      - python-software-properties
+      - python-pycurl
+      - sudo
+      - tar
+      - tree
+      - ufw
+      - unzip
+      - wget
+      - zip
