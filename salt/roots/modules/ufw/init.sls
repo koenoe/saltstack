@@ -8,8 +8,8 @@ ufw:
 
 ufw-allow-ssh:
   cmd.run:
-  - name: ufw allow from 188.203.27.167 to any port 22
-  - unless: 'ufw status | grep "^22\s*ALLOW\s*188.203.27.167"'
+  - name: ufw allow ssh
+  - unless: 'ufw status | grep "^22\s*ALLOW"'
 
 ufw-limit-ssh:
   cmd.run:
@@ -20,7 +20,7 @@ ufw-allow-http:
   cmd.run:
   - name: ufw allow http
   - unless: 'ufw status | grep "^80\s*ALLOW"'
-  
+
 ufw-allow-http-webhook:
   cmd.run:
   - name: ufw allow http

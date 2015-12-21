@@ -1,4 +1,4 @@
-# hosts
+## hosts
 # hosts:
 # db.mysql.syts: 127.0.0.1
 # db.redis.syts.cache: 127.0.0.1
