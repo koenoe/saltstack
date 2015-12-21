@@ -6,10 +6,6 @@ nginx:
       - pkg: nginx
       - file: /etc/nginx/nginx.conf
 
-nginx-extras:
-  pkg:
-    - installed
-
 /etc/nginx/nginx.conf:
   file.managed:
     - source: salt://modules/nginx/files/nginx.conf
