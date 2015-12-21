@@ -13,4 +13,5 @@ Install following plugins:
 ```sh
 vagrant plugin install vagrant-env
 vagrant plugin install salty-vagrant-grains
+vagrant plugin install vagrant-dnsmasq
 ```

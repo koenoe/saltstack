@@ -5,13 +5,25 @@ VAGRANTFILE_API_VERSION = '2'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
+  # Environment variables
   config.env.enable
 
+  # Enable dnsmasq on .local domains
+  config.dnsmasq.domain = '.vagrant'
+  config.dnsmasq.ip = ENV['IP']
+
+  # overwrite default location for /etc/dnsmasq.conf
+  config.dnsmasq.dnsmasqconf = '/usr/local/etc/dnsmasq.conf'
+
+  # command for reloading dnsmasq after config changes
+  config.dnsmasq.reload_command = 'sudo launchctl unload -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist; sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist'
+
+  # Forward ssh, so we can login with our users created on the Vagrant box
   config.ssh.forward_agent = true
 
   config.vm.box = 'base-trusty'
   config.vm.box_url = 'https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box'
-  config.vm.network :private_network, ip: '192.168.33.101'
+  config.vm.network :private_network, ip: ENV['IP']
 
   config.vm.synced_folder "~/Projects/saltstack", '/home/koen/saltstack', type: 'nfs'
   config.vm.synced_folder "~/Projects/#{ENV['STACK']}", '/home/koen/sites', type: 'nfs'
@@ -23,7 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   end
 
-  config.vm.provision :shell, :path => 'bootstrap.sh'
+  config.vm.provision :shell, path: 'bootstrap.sh'
 
   config.vm.provision :salt do |salt|
 

@@ -3,8 +3,8 @@ nginx-conf-{{ name }}:
   file.managed:
     - name: /etc/nginx/global/{{ conf|default(name) }}.conf
     - source: salt://modules/nginx/files/{{ conf|default(name) }}.conf
-    - user: www-data
+    - user: root
     - group: root
-    - mode: 644
+    - mode: 640
     - makedirs: true
 {% endmacro %}
