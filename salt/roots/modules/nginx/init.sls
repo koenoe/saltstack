@@ -1,26 +1,21 @@
+nginx:
+  pkg:
+    - installed
+  service.running:
+    - watch:
+      - pkg: nginx
+      - file: /etc/nginx/nginx.conf
+
 nginx-extras:
   pkg:
     - installed
 
-nginx_conf:
-  augeas.change:
-    - context: /files/etc/nginx/nginx.conf
-    - changes:
-      - set worker_processes {{ pillar.get('nginx.worker_processes', 'auto') }}
-      - set worker_rlimit_nofile 8192
-      - set events/worker_connections 8000
-      - set events/multi_accept on
-      - set http/include global/http.conf
-      # - set http/include global/mime-types.conf
-      - set http/default_type application/octet-stream
-      # - set http/include global/limits.conf
-      # - set http/include global/gzip.conf
-      # - set http/include global/exclusions.conf
-      # - set http/include global/security.conf
-      # - set http/include global/static-files.conf
-      # - set http/include global/fastcgi-cache.conf
-    - require:
-      - pkg: nginx-extras
+/etc/nginx/nginx.conf:
+  file.managed:
+    - source: salt://modules/nginx/files/nginx.conf
+    - user: root
+    - group: root
+    - mode: 640
 
 /var/cache/nginx:
   file.directory:
