@@ -15,6 +15,10 @@ php.timezone: UTC
 php.upload_max_filesize: 32M
 php.post_max_size: 10M
 
+# mail
+mail.port: 587
+mail.admin: admin@koenromers.com
+
 # hostname
 hostname: {{ salt['cmd.run']('hostname') }}
 

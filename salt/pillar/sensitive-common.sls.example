@@ -19,11 +19,11 @@ users:
     fullname: Deploy user
     groups: ['www-data']
     sshkeys:
-      - 
+      -
 
 # mandrill
 mandrill.username: ''
 mandrill.password: ''
 
-# monit
-monit.alert: ''
+# email
+admin.email: ''

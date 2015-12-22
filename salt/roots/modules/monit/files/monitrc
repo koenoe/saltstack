@@ -7,9 +7,9 @@ set httpd port 2812 and
 set mailserver
   smtp.mandrillapp.com
   port 587
-  username '{{ pillar['mandrill.username'] }}'
-  password '{{ pillar['mandrill.password'] }}'
+  username '{{ username }}'
+  password '{{ password }}'
 
-set alert {{ pillar['monit.alert'] }}
+set alert {{ alert }}
 
 include /etc/monit/conf.d/*
