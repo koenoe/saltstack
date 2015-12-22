@@ -4,8 +4,17 @@ monit:
   service:
     - running
 
+/etc/monit/monitrc:
+  file.managed:
+    - source: salt://modules/monit/files/monitrc.jinja
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 600
+
 {% from 'modules/monit/macros.sls' import monitor_service %}
 
+{{ monitor_service('ssh', 'ssh') }}
 {{ monitor_service('nginx', 'nginx') }}
 {{ monitor_service('beanstalk', 'beanstalk') }}
 {{ monitor_service('supervisor', 'supervisor') }}
