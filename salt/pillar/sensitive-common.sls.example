@@ -24,6 +24,3 @@ users:
 # mandrill
 mandrill.username: ''
 mandrill.password: ''
-
-# email
-admin.email: ''
