@@ -1,0 +1,15 @@
+set daemon 60
+
+set httpd port 2812 and
+  use address localhost
+  allow localhost
+
+set mailserver
+  smtp.mandrillapp.com
+  port 587
+  username '{{ username }}'
+  password '{{ password }}'
+
+set alert {{ alert }}
+
+include /etc/monit/conf.d/*

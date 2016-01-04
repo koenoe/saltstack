@@ -20,6 +20,7 @@ essential:
       - language-pack-en
       - libattr1
       - libattr1-dev
+      - libjpeg-progs
       - make
       - mytop
       - nano

@@ -1,22 +1,17 @@
-nginx-extras:
+nginx:
   pkg:
     - installed
+  service.running:
+    - watch:
+      - pkg: nginx
+      - file: /etc/nginx/nginx.conf
 
-nginx_conf:
-  augeas.change:
-    - context: /files/etc/nginx/nginx.conf
-    - changes:
-      - set worker_processes {{ pillar.get('nginx.worker_processes', 'auto') }}
-      - set http/sendfile 'off'
-      - set http/variables_hash_bucket_size '1024'
-      - set http/gzip_vary 'on'
-      - set http/gzip_proxied 'any'
-      - set http/gzip_comp_level '6'
-      - set http/gzip_buffers '16 8k'
-      - set http/gzip_http_version '1.1'
-      - set http/gzip_types 'text/plain text/css application/json application/x-javascript application/javascript text/xml application/xml application/xml+rss text/javascript font/ttf font/opentype application/vnd.ms-fontobject image/svg+xml'
-    - require:
-      - pkg: nginx-extras
+/etc/nginx/nginx.conf:
+  file.managed:
+    - source: salt://modules/nginx/files/nginx.conf
+    - user: root
+    - group: root
+    - mode: 640
 
 /var/cache/nginx:
   file.directory:
@@ -24,3 +19,16 @@ nginx_conf:
     - group: root
     - mode: 644
     - makedirs: True
+
+{% from 'modules/nginx/macros.sls' import nginx_conf %}
+
+{{ nginx_conf('http', 'http') }}
+{{ nginx_conf('mime-types', 'mime-types') }}
+{{ nginx_conf('limits', 'limits') }}
+{{ nginx_conf('gzip', 'gzip') }}
+{{ nginx_conf('exclusions', 'exclusions') }}
+{{ nginx_conf('security', 'security') }}
+{{ nginx_conf('static-files', 'static-files') }}
+{{ nginx_conf('fastcgi-params', 'fastcgi-params') }}
+{{ nginx_conf('fastcgi-cache', 'fastcgi-cache') }}
+{{ nginx_conf('ssl', 'ssl') }}

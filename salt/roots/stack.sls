@@ -6,3 +6,4 @@ include:
   - modules.supervisor
   - modules.beanstalkd
   - modules.monit
+  - modules.nullmailer

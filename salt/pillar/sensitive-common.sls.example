@@ -12,11 +12,15 @@ users:
     fullname: Koen Romers
     groups: ['admin','www-data']
     sshkeys:
-      - [insert key here]
+      -
   deploy:
     uid: 1003
     gid: 1003
     fullname: Deploy user
     groups: ['www-data']
     sshkeys:
-      - [insert key here]
+      -
+
+# mandrill
+mandrill.username: ''
+mandrill.password: ''

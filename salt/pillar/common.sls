@@ -1,4 +1,4 @@
-# hosts
+## hosts
 # hosts:
 # db.mysql.syts: 127.0.0.1
 # db.redis.syts.cache: 127.0.0.1
@@ -14,6 +14,10 @@ redis.maxmemory: 1G
 php.timezone: UTC
 php.upload_max_filesize: 32M
 php.post_max_size: 10M
+
+# mail
+mail.port: 587
+mail.admin: admin@koenromers.com
 
 # hostname
 hostname: {{ salt['cmd.run']('hostname') }}

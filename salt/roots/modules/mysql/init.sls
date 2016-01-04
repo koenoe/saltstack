@@ -3,6 +3,7 @@ mysql:
     - pkgs:
       - mysql-client
       - mysql-server
+      - automysqlbackup
   service:
     - running
     - name: mysql

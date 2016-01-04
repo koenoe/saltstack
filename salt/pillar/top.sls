@@ -1,4 +1,4 @@
 base:
   '*':
     - common
-    - sensitive-data
+    - sensitive-common
