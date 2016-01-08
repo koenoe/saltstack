@@ -1,4 +1,4 @@
 *.DS_Store
 .vagrant
 .env
-salt/pillar/sensitive-common.sls
+salt/pillar/sensitive.sls

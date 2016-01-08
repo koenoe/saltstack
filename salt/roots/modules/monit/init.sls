@@ -11,7 +11,8 @@ monit:
     - context:
         username: {{ pillar['mandrill.username'] }}
         password: {{ pillar['mandrill.password'] }}
-        alert: {{ pillar['mail.admin'] }}
+        email_to: {{ pillar['mail.admin'] }}
+        email_from: monit@{{ pillar['mail.hostname'] }}
     - user: root
     - group: root
     - mode: 600

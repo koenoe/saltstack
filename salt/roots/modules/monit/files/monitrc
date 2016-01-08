@@ -10,6 +10,8 @@ set mailserver
   username '{{ username }}'
   password '{{ password }}'
 
-set alert {{ alert }}
+set alert {{ email_to }}
+
+set mail-format { from: {{ email_from }} }
 
 include /etc/monit/conf.d/*
