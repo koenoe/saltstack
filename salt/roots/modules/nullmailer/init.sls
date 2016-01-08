@@ -22,10 +22,18 @@ nullmailer:
     - group: root
     - mode: 644
 
+/etc/nullmailer/defaulthost:
+  file.managed:
+    - contents: |
+        {{ pillar['mail.hostname'] }}
+    - user: root
+    - group: root
+    - mode: 640
+
 /etc/nullmailer/defaultdomain:
   file.managed:
     - contents: |
-        {{ pillar.get('hostname') }}
+        {{ pillar['mail.hostname'] }}
     - user: root
     - group: root
     - mode: 640

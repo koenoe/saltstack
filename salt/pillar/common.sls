@@ -1,3 +1,13 @@
+# environment
+{% if salt['cmd.run']('hostname') == 'vagrant-ubuntu-trusty-64' %}
+environment: development
+{% else %}
+environment: production
+{% endif %}
+
+# hostname
+hostname: {{ salt['cmd.run']('hostname') }}
+
 ## hosts
 # hosts:
 # db.mysql.syts: 127.0.0.1
@@ -19,12 +29,9 @@ php.post_max_size: 10M
 mail.port: 587
 mail.admin: admin@koenromers.com
 
-# hostname
-hostname: {{ salt['cmd.run']('hostname') }}
-
-# environment
-{% if pillar.get('hostname') == 'vagrant-ubuntu-trusty-64' %}
-environment: development
+# mail hostname
+{% if pillar.get('environment') == 'development' %}
+mail.hostname: koenromers.com
 {% else %}
-environment: production
+mail.hostname: {{ pillar.get('hostname') }}
 {% endif %}
