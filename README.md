@@ -30,10 +30,22 @@ salt-call state.sls modules.nginx --local
 
 ## Installation on a server
 ```sh
+# Install git
+sudo apt-get update
+sudo apt-get install git
+
+# Clone repository
+cd /home/koen && git clone git@github.com:koenoe/saltstack.git
+
+# Install salt
 wget -O install_salt.sh https://bootstrap.saltstack.com
 sudo sh install_salt.sh
 
+# Bootstrap salt
 sudo sh /home/koen/saltstack/bootstrap.sh
+
+# Start salt
+sudo salt-call state.highstate --local
 ```
 
 ### Notes ###
