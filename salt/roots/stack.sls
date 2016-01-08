@@ -7,3 +7,4 @@ include:
   - modules.beanstalkd
   - modules.monit
   - modules.nullmailer
+  - modules.sites
