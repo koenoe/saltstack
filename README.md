@@ -15,12 +15,6 @@ vagrant plugin install salty-vagrant-grains
 vagrant plugin install vagrant-dnsmasq
 ```
 
-To reinitialise:
-
-```sh
-salt-call state.highstate --local
-```
-
 To reinitialise a module:
 
 ```sh
