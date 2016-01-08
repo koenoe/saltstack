@@ -1,4 +1,4 @@
-s3sync:
+s3cmd:
   pkg.latest:
     - pkgs:
       - automysqlbackup
@@ -20,7 +20,7 @@ s3sync:
 
 /root/.s3cfg:
   file.managed:
-    - source: salt://modules/s3sync/files/s3cfg
+    - source: salt://modules/s3cmd/files/s3cfg
     - template: jinja
     - context:
         access_key: {{ pillar['s3.access_key'] }}
