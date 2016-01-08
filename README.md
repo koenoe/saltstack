@@ -8,15 +8,27 @@ Based on [Simplestack](https://github.com/wietsehage/simplestack) from Wietse Ha
 ## Installation for local development
 
 Install following plugins:
-
 ```sh
 vagrant plugin install vagrant-env
 vagrant plugin install salty-vagrant-grains
 vagrant plugin install vagrant-dnsmasq
 ```
 
-To reinitialise a module:
+Start Vagrant:
+```sh
+vagrant up
+```
 
+To ssh to Vagrant:
+```sh
+# Vagrant user
+vagrant ssh
+
+# Other user
+ssh user@ip-address
+```
+
+To reinitialise a module:
 ```sh
 salt-call state.sls modules.nginx --local
 ```
