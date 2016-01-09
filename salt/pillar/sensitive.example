@@ -30,4 +30,6 @@ s3.access_key: ''
 s3.secret_key: ''
 
 # sites
-sites: ['','']
+sites:
+  sitename:
+    backup_uploads: true/false
