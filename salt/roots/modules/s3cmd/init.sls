@@ -20,20 +20,16 @@ s3cmd:
     - hour: 2
 
 {% for site, args in pillar['sites'].iteritems() %}
-{% if args['backup_uploads'] %}
+{% if args['backup_folders'] %}
 
-{% if grains['roles'] == 'wordpress' %}
-/usr/bin/s3cmd sync /home/koen/sites/{{ site }}/current/web/app/uploads s3://backup.{{ pillar.get('hostname') }}/uploads/{{ site }}/ >> /var/log/s3cmd.log 2>&1:
+{% for folder in args['backup_folders'] %}
+/usr/bin/s3cmd sync /home/koen/sites/{{ site }}/{{ folder['source'] }} s3://backup.{{ pillar.get('hostname') }}/{{ site }}/{{ folder['destination'] }}/ >> /var/log/s3cmd.log 2>&1:
   cron.present:
-    - identifier: s3 backup uploads {{ site }}
+    - identifier: s3 backup {{ site }} {{ folder['destination'] }}
     - user: root
     - minute: 0
     - hour: 3
-{% elif grains['roles'] == 'rails' %}
-# rails backup uploads here
-{% elif grains['roles'] == 'nodejs' %}
-# nodejs backup uploads here
-{% endif %}
+{% endfor %}
 
 {% endif %}
 {% endfor %}
