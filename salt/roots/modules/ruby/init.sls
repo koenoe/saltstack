@@ -19,6 +19,8 @@ rbenv-deps:
 install-rbenv:
   rbenv.install_rbenv:
     - user: root
+    - require:
+      - pkg: rbenv-deps
 
 git-ruby-build:
   git.latest:
@@ -26,12 +28,20 @@ git-ruby-build:
     - rev: master
     - target: /usr/local/rbenv/plugins/ruby-build
     - force: True
+    - user: root
     - require:
       - rbenv: install-rbenv
 
 global-profile:
   file.managed:
     - name: /etc/profile.d/rbenv.sh
+    - source: salt://modules/ruby/files/rbenv.sh
+    - user: root
+    - require:
+      - git: git-ruby-build
+
+/root/.bashrc:
+  file.append:
     - source: salt://modules/ruby/files/rbenv.sh
     - require:
       - git: git-ruby-build
@@ -42,6 +52,4 @@ install-ruby:
     - default: True
     - user: root
     - require:
-      - pkg: rbenv-deps
       - file: global-profile
-      - git: git-ruby-build

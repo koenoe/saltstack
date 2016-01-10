@@ -6,7 +6,7 @@
 #   pkg.latest:
 #     - refresh: true
 
-nodejs:
+nodejs-deps:
   pkg.installed:
     - names:
       - git
@@ -17,76 +17,41 @@ nodejs:
 install-nvm:
   cmd.run:
     - name: 'CURL=`which curl`; $CURL -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | NVM_DIR="/usr/local/nvm" bash'
-    - cwd: /root/
+    - user: root
+    - require:
+      - pkg: nodejs-deps
 
-source-nvm:
-  cmd.wait:
-    - name: source /usr/local/nvm/nvm.sh
-    - cwd: /root/
-    - watch:
+global-profile:
+  file.managed:
+    - name: /etc/profile.d/nvm.sh
+    - source: salt://modules/nodejs/files/nvm.sh
+    - require:
       - cmd: install-nvm
 
 install-nodejs:
-  cmd.wait:
+  cmd.run:
     - name: nvm install {{ pillar['nodejs.version'] }}
-    - cwd: /root/
-    - watch:
-      - cmd: source-nvm
+    - user: root
+    - require:
+      - file: global-profile
 
 use-nodejs-version:
   cmd.wait:
     - name: nvm use {{ pillar['nodejs.version'] }}
-    - cwd: /root/
+    - user: root
     - watch:
       - cmd: install-nodejs
 
 set-default-nodejs:
   cmd.wait:
     - name: nvm alias default {{ pillar['nodejs.version'] }}
-    - cwd: /root/
+    - user: root
     - watch:
       - cmd: use-nodejs-version
 
 global-nodejs:
   cmd.wait:
     - name: 'n=$(which node);n=${n%/bin/node}; chmod -R 755 $n/bin/*; cp -r $n/{bin,lib,share} /usr/local'
-    - cwd: /root/
+    - user: root
     - watch:
       - cmd: set-default-nodejs
-
-# create-nvm-folder:
-#   file.directory:
-#     - name: /root/.nvm
-#     - makedirs: True
-#
-# clone-nvm-repo:
-#   git.latest:
-#     - name: https://github.com/creationix/nvm.git
-#     - rev: master
-#     - target: /root/.nvm
-#     - force: True
-#     - require:
-#       - file: create-nvm-folder
-#
-# source-nvm:
-#   cmd.run:
-#     - name: source /root/.nvm/nvm.sh
-#     - require:
-#       - git: clone-nvm-repo
-#
-# add-nvm-path:
-#   file.append:
-#     - name: /root/.profile
-#     - text: |
-#         export NVM_DIR="$HOME/.nvm"
-#         [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-#     - require:
-#       - git: clone-nvm-repo
-#
-# install-nodejs:
-#   cmd.run:
-#     - names:
-#       - nvm install {{ pillar['nodejs.version'] }}
-#       - nvm use {{ pillar['nodejs.version'] }}
-#     - require:
-#       - file: add-nvm-path
