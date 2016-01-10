@@ -41,9 +41,21 @@ set-default-nodejs:
     - watch:
       - cmd: use-nodejs-version
 
+change-permissions:
+  file.directory:
+    - name: /usr/local/nvm
+    - group: www-data
+    - mode: 774
+    - makedirs: True
+    - recurse:
+      - group
+      - mode
+    - require:
+      - cmd: set-default-nodejs
+
 global-nodejs:
-  cmd.wait:
+  cmd.run:
     - name: 'n=$(which node);n=${n%/bin/node}; chmod -R 755 $n/bin/*; cp -r $n/{bin,lib,share} /usr/local'
     - user: root
-    - watch:
-      - cmd: set-default-nodejs
+    - require:
+      - file: change-permissions
