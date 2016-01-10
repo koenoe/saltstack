@@ -22,21 +22,21 @@ global-profile:
 
 install-nodejs:
   cmd.run:
-    - name: nvm install {{ pillar['nodejs.version'] }}
+    - name: 'source /usr/local/nvm/nvm.sh; nvm install {{ pillar['nodejs.version'] }}'
     - user: root
     - require:
       - file: global-profile
 
 use-nodejs-version:
   cmd.wait:
-    - name: nvm use {{ pillar['nodejs.version'] }}
+    - name: 'source /usr/local/nvm/nvm.sh; nvm use {{ pillar['nodejs.version'] }}'
     - user: root
     - watch:
       - cmd: install-nodejs
 
 set-default-nodejs:
   cmd.wait:
-    - name: nvm alias default {{ pillar['nodejs.version'] }}
+    - name: 'source /usr/local/nvm/nvm.sh; nvm alias default {{ pillar['nodejs.version'] }}'
     - user: root
     - watch:
       - cmd: use-nodejs-version
