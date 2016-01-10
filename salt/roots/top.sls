@@ -10,10 +10,10 @@ base:
     - modules.php
     - modules.composer
     - modules.wp-cli
-    - modules.wordpress-sites
 
   'roles:rails':
     - match: grain
+    - modules.ruby
 
   'roles:nodejs':
     - match: grain

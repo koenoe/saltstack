@@ -25,6 +25,12 @@ php.timezone: UTC
 php.upload_max_filesize: 32M
 php.post_max_size: 10M
 
+# ruby
+ruby.version: 2.3.0
+
+# nodejs
+nodejs.version: 5.4.0
+
 # mail
 mail.port: 587
 mail.admin: admin@koenromers.com

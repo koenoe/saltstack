@@ -19,6 +19,7 @@ purge:
       - resolvconf
       - whoopsie
       - postfix
+      - ruby
 
 # Aptitude cleanup
 cleanup:
