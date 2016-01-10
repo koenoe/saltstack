@@ -21,16 +21,12 @@ vagrant up
 
 To ssh to Vagrant:
 ```sh
-# Vagrant user
-vagrant ssh
-
-# Other user
 ssh user@ip-address
 ```
 
 To reinitialise a module:
 ```sh
-salt-call state.sls modules.nginx --local
+sudo salt-call state.sls modules.nginx --local
 ```
 
 ## Installation on a server

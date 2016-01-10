@@ -13,6 +13,7 @@ base:
 
   'roles:rails':
     - match: grain
+    - modules.ruby
 
   'roles:nodejs':
     - match: grain
