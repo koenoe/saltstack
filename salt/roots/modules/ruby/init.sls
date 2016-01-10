@@ -53,3 +53,10 @@ install-ruby:
     - user: root
     - require:
       - file: global-profile
+
+bundler:
+  cmd.run:
+  - user: root
+  - name: 'gem install bundler'
+  - require:
+    - rbenv: install-ruby
