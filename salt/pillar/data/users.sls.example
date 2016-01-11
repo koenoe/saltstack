@@ -20,20 +20,3 @@ users:
     groups: ['www-data']
     sshkeys:
       -
-
-# mandrill
-mandrill.username: ''
-mandrill.password: ''
-
-# s3
-s3.access_key: ''
-s3.secret_key: ''
-
-# sites
-sites:
-  example:
-    backup_folders:
-      - source: current/web/app/uploads
-        destination: uploads
-  another_example:
-    backup_folders: False

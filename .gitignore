@@ -1,4 +1,6 @@
 *.DS_Store
 .vagrant
 .env
-salt/pillar/sensitive.sls
+
+# By default ignore all pillars, due to sensitive data
+salt/pillar/data/*.sls

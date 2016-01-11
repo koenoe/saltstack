@@ -2,19 +2,23 @@ base:
   '*':
     - stack
 
-  'roles:wordpress':
+  'language:php':
     - match: grain
-    - modules.mysql
-    - modules.redis
-    - modules.memcached
     - modules.php
     - modules.composer
     - modules.wp-cli
 
-  'roles:rails':
+  'language:rails':
     - match: grain
     - modules.ruby
 
-  'roles:nodejs':
+  'language:nodejs':
     - match: grain
     - modules.nodejs
+
+  'database:mysql':
+    - match: grain
+    - modules.mysql
+
+  'database:mongodb':
+    - match: grain
