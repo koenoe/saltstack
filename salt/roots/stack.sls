@@ -3,6 +3,8 @@ include:
   - modules.ssh
   - modules.ufw
   - modules.nginx
+  - modules.redis
+  - modules.memcached
   - modules.supervisor
   - modules.beanstalkd
   - modules.monit

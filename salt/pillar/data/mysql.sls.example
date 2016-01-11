@@ -1,0 +1,2 @@
+mysql.query_cache_limit: 16M
+mysql.innodb_buffer_pool_size: 256M

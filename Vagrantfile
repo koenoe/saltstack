@@ -26,7 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :private_network, ip: ENV['IP']
 
   config.vm.synced_folder "~/Projects/saltstack", '/home/koen/saltstack', type: 'nfs'
-  config.vm.synced_folder "~/Projects/#{ENV['STACK']}", '/home/koen/sites', type: 'nfs'
+  config.vm.synced_folder "~/Projects/#{ENV['LANGUAGE']}", '/home/koen/sites', type: 'nfs'
 
   config.vm.provider :virtualbox do |vb|
 
@@ -40,7 +40,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :salt do |salt|
 
     salt.grains({
-      roles: [ENV['STACK']]
+      language: ENV['LANGUAGE'],
+      database: ENV['DATABASE']
     })
 
     salt.bootstrap_options = '-F -c /tmp/ -P'

@@ -25,7 +25,10 @@ monit:
 {{ monitor_service('supervisor', 'supervisor') }}
 {{ monitor_service('nullmailer', 'nullmailer') }}
 
-{% if grains['roles'] == 'wordpress' %}
+{% if grains['language'] == 'php' %}
 {{ monitor_service('php', 'php') }}
+{% endif %}
+
+{% if grains['database'] == 'mysql' %}
 {{ monitor_service('mysql', 'mysql') }}
 {% endif %}
