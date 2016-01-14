@@ -54,21 +54,9 @@ install-ruby:
     - require:
       - file: global-profile
 
-change-permissions:
-  file.directory:
-    - name: /usr/local/rbenv
-    - group: www-data
-    - mode: 774
-    - makedirs: True
-    - recurse:
-      - group
-      - mode
-    - require:
-      - rbenv: install-ruby
-
 bundler:
   cmd.run:
   - user: root
   - name: 'gem install bundler'
   - require:
-    - file: change-permissions
+    - file: install-ruby
