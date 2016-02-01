@@ -25,7 +25,7 @@ s3cmd:
 {% if args['backup_folders'] %}
 
 {% for folder in args['backup_folders'] %}
-/usr/bin/s3cmd sync /home/koen/sites/{{ site }}/{{ folder['source'] }} s3://backup.{{ pillar.get('hostname') }}/{{ site }}/{{ folder['destination'] }}/ >> /var/log/s3cmd.log 2>&1:
+/usr/bin/s3cmd sync --skip-existing --delete-removed /home/koen/sites/{{ site }}/{{ folder['source'] }} s3://backup.{{ pillar.get('hostname') }}/{{ site }}/{{ folder['destination'] }}/ >> /var/log/s3cmd.log 2>&1:
   cron.present:
     - identifier: s3 backup {{ site }} {{ folder['destination'] }}
     - user: root
