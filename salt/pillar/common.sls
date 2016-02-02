@@ -6,4 +6,4 @@ environment: production
 {% endif %}
 
 # hostname
-hostname: {{ salt['cmd.run']('hostname -f') }}
+hostname: {{ salt['cmd.run']('hostname') }}

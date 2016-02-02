@@ -1,8 +1,3 @@
 mail.port: 587
-mail.admin: admin@koenromers.com
-
-{% if pillar.get('environment') == 'development' %}
+mail.admin: {{ pillar.get('hostname') }}@koenromers.com
 mail.hostname: koenromers.com
-{% else %}
-mail.hostname: {{ pillar.get('hostname') }}
-{% endif %}
