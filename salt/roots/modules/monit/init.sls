@@ -25,10 +25,10 @@ monit:
 {{ monitor_service('supervisor', 'supervisor') }}
 {{ monitor_service('nullmailer', 'nullmailer') }}
 
-{% if grains['language'] == 'php' %}
+{% if 'php' in grains['language'] %}
 {{ monitor_service('php', 'php') }}
 {% endif %}
 
-{% if grains['database'] == 'mysql' %}
+{% if 'mysql' in grains['database'] %}
 {{ monitor_service('mysql', 'mysql') }}
 {% endif %}
