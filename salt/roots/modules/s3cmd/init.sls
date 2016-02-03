@@ -5,7 +5,7 @@ s3cmd:
 
 {% if pillar.get('environment') == 'production' %}
 
-{% if grains['database'] == 'mysql' %}
+{% if 'mysql' in grains['database'] %}
 /usr/bin/s3cmd sync --skip-existing /var/lib/automysqlbackup/ s3://backup.{{ pillar.get('hostname.full') }}/mysql/ >> /var/log/s3cmd.log 2>&1:
   cron.present:
     - identifier: s3 backup mysql
