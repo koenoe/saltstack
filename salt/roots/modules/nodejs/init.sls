@@ -25,7 +25,7 @@ install-nodejs:
     - name: 'source /usr/local/nvm/nvm.sh; nvm install {{ pillar['nodejs.version'] }}'
     - user: root
     - require:
-      - file: global-profile
+      - file: global-profile-nvm
 
 use-nodejs-version:
   cmd.wait:
