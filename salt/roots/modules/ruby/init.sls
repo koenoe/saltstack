@@ -52,7 +52,7 @@ install-ruby:
     - default: True
     - user: root
     - require:
-      - file: global-profile
+      - file: global-profile-rbenv
 
 bundler:
   cmd.run:
