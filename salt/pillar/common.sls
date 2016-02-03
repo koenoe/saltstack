@@ -7,3 +7,6 @@ environment: production
 
 # hostname
 hostname: {{ salt['cmd.run']('hostname') }}
+
+# full hostname
+hostname.full: {{ salt['cmd.run']('hostname -f') }}
