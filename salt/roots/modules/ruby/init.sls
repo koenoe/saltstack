@@ -56,7 +56,7 @@ install-ruby:
 
 bundler:
   cmd.run:
-  - user: root
-  - name: 'gem install bundler'
-  - require:
-    - file: install-ruby
+    - user: root
+    - name: 'gem install bundler'
+    - require:
+      - file: install-ruby

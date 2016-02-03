@@ -6,7 +6,7 @@ s3cmd:
 {% if pillar.get('environment') == 'production' %}
 
 {% if grains['database'] == 'mysql' %}
-/usr/bin/s3cmd sync --skip-existing /var/lib/automysqlbackup/ s3://backup.{{ pillar.get('hostname') }}/mysql/ >> /var/log/s3cmd.log 2>&1:
+/usr/bin/s3cmd sync --skip-existing /var/lib/automysqlbackup/ s3://backup.{{ pillar.get('hostname.full') }}/mysql/ >> /var/log/s3cmd.log 2>&1:
   cron.present:
     - identifier: s3 backup mysql
     - user: root
@@ -14,7 +14,7 @@ s3cmd:
     - hour: 1
 {% endif %}
 
-/usr/bin/s3cmd sync /var/lib/redis/ s3://backup.{{ pillar.get('hostname') }}/redis/ >> /var/log/s3cmd.log 2>&1:
+/usr/bin/s3cmd sync /var/lib/redis/ s3://backup.{{ pillar.get('hostname.full') }}/redis/ >> /var/log/s3cmd.log 2>&1:
   cron.present:
     - identifier: s3 backup redis
     - user: root
@@ -25,7 +25,7 @@ s3cmd:
 {% if args['backup_folders'] %}
 
 {% for folder in args['backup_folders'] %}
-/usr/bin/s3cmd sync --skip-existing --delete-removed /home/koen/sites/{{ site }}/{{ folder['source'] }} s3://backup.{{ pillar.get('hostname') }}/{{ site }}/{{ folder['destination'] }}/ >> /var/log/s3cmd.log 2>&1:
+/usr/bin/s3cmd sync --skip-existing --delete-removed /home/koen/sites/{{ site }}/{{ folder['source'] }} s3://backup.{{ pillar.get('hostname.full') }}/{{ site }}/{{ folder['destination'] }}/ >> /var/log/s3cmd.log 2>&1:
   cron.present:
     - identifier: s3 backup {{ site }} {{ folder['destination'] }}
     - user: root
