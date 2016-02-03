@@ -13,7 +13,7 @@ install-nvm:
     - require:
       - pkg: nodejs-deps
 
-global-profile:
+global-profile-nvm:
   file.managed:
     - name: /etc/profile.d/nvm.sh
     - source: salt://modules/nodejs/files/nvm.sh

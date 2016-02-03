@@ -32,7 +32,7 @@ git-ruby-build:
     - require:
       - rbenv: install-rbenv
 
-global-profile:
+global-profile-rbenv:
   file.managed:
     - name: /etc/profile.d/rbenv.sh
     - source: salt://modules/ruby/files/rbenv.sh

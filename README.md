@@ -33,10 +33,10 @@ sudo salt-call state.sls modules.nginx --local
 ```sh
 # Install git
 sudo apt-get update
-sudo apt-get install git
+sudo apt-get install git python-m2crypto python-augeas
 
 # Clone repository
-cd /home/koen && git clone git@github.com:koenoe/saltstack.git
+mkdir home/koen && cd /home/koen && git clone https://github.com/koenoe/saltstack.git
 
 # Install salt
 wget -O install_salt.sh https://bootstrap.saltstack.com
