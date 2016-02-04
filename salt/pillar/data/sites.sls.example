@@ -2,6 +2,5 @@ sites:
   example:
     backup_folders:
       - source: web/app/uploads
-        destination: uploads
   another-example:
     backup_folders: False
