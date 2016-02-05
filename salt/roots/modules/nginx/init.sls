@@ -24,12 +24,14 @@ nginx:
   file.directory:
     - user: root
     - group: root
-    - mode: 600
+    - mode: 400
     - makedirs: True
 
 /etc/nginx/ssl/dhparams.pem:
   cmd.run:
     - name: openssl dhparam -out /etc/nginx/ssl/dhparams.pem 2048
+    - require:
+      - file: /etc/nginx/ssl
     - unless: test -f /etc/nginx/ssl/dhparams.pem
 
 {% from 'modules/nginx/macros.sls' import nginx_conf %}
