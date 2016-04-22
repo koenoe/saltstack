@@ -6,6 +6,7 @@ base:
     - data.mail
     - data.s3
     - data.mandrill
+    - data.sendgrid
     - data.redis
 
   'language:php':
