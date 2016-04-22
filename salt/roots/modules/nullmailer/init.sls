@@ -9,7 +9,7 @@ nullmailer:
 /etc/nullmailer/remotes:
   file.managed:
     - contents: |
-        smtp.mandrillapp.com smtp --starttls --user={{ pillar['mandrill.username'] }} --pass={{ pillar['mandrill.password'] }} --port={{ pillar['mail.port'] }}
+        smtp.sendgrid.net smtp --starttls --user={{ pillar['sendgrid.username'] }} --pass={{ pillar['sendgrid.password'] }} --port={{ pillar['mail.port'] }}
     - user: mail
     - group: mail
     - mode: 600

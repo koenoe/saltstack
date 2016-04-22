@@ -5,7 +5,7 @@ set httpd port 2812 and
   allow localhost
 
 set mailserver
-  smtp.mandrillapp.com
+  smtp.sendgrid.net
   port 587
   username '{{ username }}'
   password '{{ password }}'
