@@ -9,8 +9,8 @@ monit:
     - source: salt://modules/monit/files/monitrc
     - template: jinja
     - context:
-        username: {{ pillar['mandrill.username'] }}
-        password: {{ pillar['mandrill.password'] }}
+        username: {{ pillar['sendgrid.username'] }}
+        password: {{ pillar['sendgrid.password'] }}
         email_to: {{ pillar['mail.admin'] }}
         email_from: monit@{{ pillar['mail.hostname'] }}
     - user: root
