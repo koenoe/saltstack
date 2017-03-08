@@ -3,15 +3,38 @@ Based on [Simplestack](https://github.com/wietsehage/simplestack) from Wietse Ha
 
 ## Requirements
 
-* Vagrant 1.7.4 or higher
+* Vagrant 1.7.4
+* Virtualbox 5.0.0-101573
+
+## Install older version of Vagrant and Virtualbox
+```sh
+brew cask install vagrant; brew cask edit vagrant;
+```
+Change version to 1.7.4
+```sh
+brew cask fetch vagrant
+```
+Copy actual sha256 hash and paste it in the same file where you changed the version.
+```sh
+brew cask uninstall --force vagrant; brew cask install vagrant; rm -rf ~/.vagrant.d/;
+```
+```sh
+brew cask install virtualbox; brew cask edit virtualbox;
+```
+Change version to 5.0.0-101573
+```sh
+brew cask fetch virtualbox
+```
+Copy actual sha256 hash and paste it in the same file where you changed the version.
+```sh
+brew cask uninstall --force virtualbox; brew cask install virtualbox;
+```
 
 ## Installation for local development
 
 Install following plugins:
 ```sh
-vagrant plugin install vagrant-env
-vagrant plugin install salty-vagrant-grains
-vagrant plugin install vagrant-dnsmasq
+vagrant plugin install vagrant-env salty-vagrant-grains vagrant-dnsmasq
 ```
 
 Start Vagrant:
