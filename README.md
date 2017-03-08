@@ -18,7 +18,7 @@ Copy actual sha256 hash and paste it in the same file where you changed the vers
 ```sh
 brew cask uninstall --force vagrant; brew cask install vagrant; rm -rf ~/.vagrant.d/;
 ```
-## Install older version of Vagrant
+## Install older version of Virtualbox
 ```sh
 brew cask install virtualbox; brew cask edit virtualbox;
 ```
