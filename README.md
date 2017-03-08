@@ -28,7 +28,10 @@ brew cask fetch virtualbox
 ```
 Copy actual sha256 hash and paste it in the same file where you changed the version.
 ```sh
-brew cask uninstall --force virtualbox; brew cask install virtualbox;
+brew cask uninstall --force virtualbox; brew cask install virtualbox; sudo "/Library/Application Support/VirtualBox/LaunchDaemons/VirtualBoxStartup.sh" restart;
+for bin in VirtualBox VirtualBoxVM VBoxNetAdpCtl VBoxNetDHCP VBoxNetNAT VBoxHeadless; do
+  sudo chmod u+s "/Applications/VirtualBox.app/Contents/MacOS/${bin}"
+done
 ```
 
 ## Installation for local development
