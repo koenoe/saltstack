@@ -6,7 +6,7 @@ Based on [Simplestack](https://github.com/wietsehage/simplestack) from Wietse Ha
 * Vagrant 1.7.4
 * Virtualbox 5.0.0-101573
 
-## Install older version of Vagrant and Virtualbox
+## Install older version of Vagrant
 ```sh
 brew cask install vagrant; brew cask edit vagrant;
 ```
@@ -18,6 +18,7 @@ Copy actual sha256 hash and paste it in the same file where you changed the vers
 ```sh
 brew cask uninstall --force vagrant; brew cask install vagrant; rm -rf ~/.vagrant.d/;
 ```
+## Install older version of Vagrant
 ```sh
 brew cask install virtualbox; brew cask edit virtualbox;
 ```
