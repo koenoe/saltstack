@@ -10,7 +10,7 @@ Based on [Simplestack](https://github.com/wietsehage/simplestack) from Wietse Ha
 
 Install following plugins:
 ```sh
-vagrant plugin install vagrant-env salty-vagrant-grains vagrant-dnsmasq
+vagrant plugin install vagrant-env salty-vagrant-grains vagrant-dnsmasq vagrant-vbguest
 ```
 
 Start Vagrant:

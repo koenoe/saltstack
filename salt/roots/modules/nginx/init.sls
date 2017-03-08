@@ -29,7 +29,7 @@ nginx:
 
 /etc/nginx/ssl/dhparams.pem:
   cmd.run:
-    - name: openssl dhparam -out /etc/nginx/ssl/dhparams.pem 4096
+    - name: openssl dhparam -dsaparam -out /etc/nginx/ssl/dhparams.pem 2048
     - require:
       - file: /etc/nginx/ssl
     - unless: test -f /etc/nginx/ssl/dhparams.pem
