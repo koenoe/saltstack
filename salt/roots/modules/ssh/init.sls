@@ -1,3 +1,5 @@
+{% if pillar.get('environment') == 'production' %}
+
 {% for user, args in pillar['users'].iteritems() %}
 sshkeys-{{ user }}:
    ssh_auth:
@@ -16,3 +18,5 @@ ssh_conf:
     - changes:
       - set PasswordAuthentication 'no'
       - set UsePAM 'no'
+
+{% endif %}
