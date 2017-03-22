@@ -20,7 +20,7 @@ vagrant up
 
 To ssh to Vagrant:
 ```sh
-ssh user@ip-address
+vagrant ssh
 ```
 
 To reinitialise a module:

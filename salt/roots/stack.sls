@@ -14,6 +14,6 @@ include:
   - modules.php
   - modules.composer
   - modules.wp-cli
-  - modules.ruby
-  - modules.nodejs
   - modules.mysql
+  # - modules.nodejs
+  # - modules.ruby

@@ -29,7 +29,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.insert_key = false
 
   config.vm.synced_folder "~/Projects/saltstack", '/home/koen/saltstack', nfs: true, mount_options: ['actimeo=2']
-  config.vm.synced_folder "~/Projects/#{ENV['LANGUAGE']}", '/home/koen/sites', nfs: true, mount_options: ['actimeo=2']
+  config.vm.synced_folder "~/Projects/php", '/home/koen/sites', nfs: true, mount_options: ['actimeo=2']
 
   config.vm.provider :virtualbox do |vb|
     vb.gui = true
