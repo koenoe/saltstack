@@ -11,3 +11,9 @@ include:
   - modules.nullmailer
   - modules.s3cmd
   - modules.sites
+  - modules.php
+  - modules.composer
+  - modules.wp-cli
+  - modules.ruby
+  - modules.nodejs
+  - modules.mysql
